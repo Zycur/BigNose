@@ -7,9 +7,11 @@ public class EnemyAI : MonoBehaviour
 {
     public Transform target;
 
-    public float speed = 200f;
+    public float speed;
     public float nextWaypointDistance = 3f;
     public int health;
+    public float dazedTime;
+    public float startDazedTime;
 
     public Transform enemyGFX;
 
@@ -51,6 +53,16 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (dazedTime <= 0)
+        {
+            speed = 400f;
+        }
+        else
+        {
+            speed = 0;
+            dazedTime -= Time.deltaTime;
+        }
+
         if (path == null)
         {
             return;
@@ -88,14 +100,18 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
-        
 
 
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void TakeDamage(int damage)
     {
-        enemyGFX.GetComponent<Health>().TakeDamage(damage);
+        dazedTime = startDazedTime;
+        health = health - damage;
         Debug.Log(health);
     }
 }

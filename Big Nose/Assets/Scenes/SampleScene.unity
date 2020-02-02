@@ -177,6 +177,8 @@ MonoBehaviour:
   speed: 400
   nextWaypointDistance: 3
   health: 100
+  dazedTime: 0
+  startDazedTime: 0.5
   enemyGFX: {fileID: 2012201595}
 --- !u!58 &45252226
 CircleCollider2D:
@@ -559,7 +561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &580812139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -718,7 +720,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e607448ab0d19542aa6aec6a9cbd3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTimeBtwAttack: 0.5
+  startTimeBtwAttack: 0.3
+  animator: {fileID: 620621947}
   attackPos: {fileID: 903797803}
   whatIsEnemy:
     serializedVersion: 2

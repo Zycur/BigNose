@@ -11,18 +11,9 @@ public class Health : MonoBehaviour
         
     }
 
-    public void TakeDamage(int damage)
-    {
-        health = health - damage;
-        Debug.Log(health);
-    }
-
     // Update is called once per frame
     void Update()
     {
-        if(health <= 0)
-        {
-            Destroy(gameObject);
-        }
+        
     }
 }

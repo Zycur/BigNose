@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class SwordSwing : MonoBehaviour
 {
-    private float timeBtwAttack;
+    private float timeBtwAttack = 0;
     public float startTimeBtwAttack;
+    public Animator animator;
 
     public Transform attackPos;
     public LayerMask whatIsEnemy;
@@ -18,13 +19,16 @@ public class SwordSwing : MonoBehaviour
         {
             if(Input.GetKey(KeyCode.Mouse0))
             {
+                animator.SetTrigger("Attack");
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
+                Debug.Log(enemiesToDamage.Length);
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {
                     enemiesToDamage[i].GetComponent<EnemyAI>().TakeDamage(damage);
                 }
+                timeBtwAttack = startTimeBtwAttack;
             }
-            timeBtwAttack = startTimeBtwAttack;
+            
         }
         else
         {
