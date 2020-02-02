@@ -8,7 +8,14 @@ public class BulletFly : MonoBehaviour
     public Rigidbody2D rb;
     Collider2D hitInfo;
     public int damage = 25;
+    public int PlayerMask;
     // Start is called before the first frame update
+
+    void Awake()
+    {
+        
+    }
+
     void Start()
     {
         rb.velocity = transform.right * speed;
@@ -16,6 +23,7 @@ public class BulletFly : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
+
         if(hitInfo.name == "Main Bird")
         {
             Health hp = (Health) hitInfo.gameObject.GetComponent(typeof(Health));

@@ -9,6 +9,7 @@ public class EnemyAI : MonoBehaviour
 
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
+    public int health;
 
     public Transform enemyGFX;
 
@@ -35,6 +36,7 @@ public class EnemyAI : MonoBehaviour
         {
             seeker.StartPath(rb.position, target.position, OnPathComplete);
         }
+
     }
 
     void OnPathComplete(Path p)
@@ -89,5 +91,11 @@ public class EnemyAI : MonoBehaviour
         
 
 
+    }
+
+    public void TakeDamage(int damage)
+    {
+        enemyGFX.GetComponent<Health>().TakeDamage(damage);
+        Debug.Log(health);
     }
 }
